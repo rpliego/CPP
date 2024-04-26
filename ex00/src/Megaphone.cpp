@@ -3,7 +3,6 @@
 int main(int ac, char **av)
 {
 	int	i = 0;
-	int	j;
 
     if (ac == 1)
 	{
@@ -12,11 +11,10 @@ int main(int ac, char **av)
 	}
 	while (av[++i])
 	{
-		j = -1;
-		while (av[i][++j])
-		{
+		if (i > 1)
+			std::cout << " ";
+		for (int j = 0; av[i][j]; j++)
 			std::cout << (char)toupper(av[i][j]);
-		}
 	}
 	std::cout << std::endl;
     return 0;
