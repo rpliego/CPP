@@ -19,16 +19,17 @@ void	Contact::show_contact()
 {
 	std::cout << std::endl;
 	std::cout << "First name: " <<this->_first_name << std::endl;
-	std::cout << "Last name: " << this->_first_name << std::endl;
-	std::cout << "Nickname: " << this->_first_name << std::endl;
-	std::cout << "Phone number: " << this->_first_name << std::endl;
-	std::cout << "Dark secret: "<< this->_first_name << std::endl;
+	std::cout << "Last name: " << this->_last_name << std::endl;
+	std::cout << "Nickname: " << this->_nickname << std::endl;
+	std::cout << "Phone number: " << this->_phone_number << std::endl;
+	std::cout << "Dark secret: "<< this->_dark_secret << std::endl;
 	std::cout << std::endl;
 }
 
 void	Phonebook::search(void)
 {
 	int	i = 0;
+	std::string input;
 
 	if (_counter == 0){
 		std::cout << "\x1b[31mPhonebook its empty\x1b[0m" << std::endl;
@@ -42,11 +43,12 @@ void	Phonebook::search(void)
 		i++;
 	}
 
-	std::string input;
-
-	std::cout << std::endl <<  "\x1b[33;1mEnter an index: \x1b[0m";
+	std::cout << std::endl << "\x1b[33;1mEnter an index: \x1b[0m";
 	if (!std::getline(std::cin, input))
 		exit(1);
 	i = atoi(input.c_str()) - 1;
-	_contacts[i].show_contact();
+	if (i < _counter && i >= 0 && i < 8)
+		_contacts[i].show_contact();
+	else
+		std::cout << "\x1b[31mInvalid Index\x1b[0m" << std::endl;
 }
