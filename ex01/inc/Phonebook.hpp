@@ -12,11 +12,10 @@ public:
 
 private:
 	Contact _contacts[8];
+	int		_index;
+	int		_counter;
 };
 
-Phonebook::Phonebook() {}
-
-Phonebook::~Phonebook() {}
 
 
 #endif

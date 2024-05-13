@@ -11,10 +11,10 @@ INC_DIR = inc/
 RM = rm -rf
 MP = mkdir -p
 CC = clang++
-CFLAGS = -Werror -Wextra -Wall -std=c++98 -O3 -g -fsanitize=address
+CFLAGS = -Werror -Wextra -Wall -std=c++98 -g -fsanitize=address
 # =============
 
-FILES = main
+FILES = main Contact Phonebook
 
 SRC = $(addsuffix .cpp, $(FILES))
 
