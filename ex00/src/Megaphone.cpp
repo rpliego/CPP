@@ -11,8 +11,8 @@ int main(int ac, char **av)
 	}
 	while (av[++i])
 	{
-		if (i > 1)
-			std::cout << " ";
+		// if (i > 1)
+		// 	std::cout << " ";
 		for (int j = 0; av[i][j]; j++)
 			std::cout << (char)toupper(av[i][j]);
 	}

@@ -28,7 +28,7 @@ DEP = $(addsuffix .d, $(basename $(OBJ)))
 $(OBJ_DIR)%.o: %.cpp
 	@$(MP) $(dir $@)
 	@$(CC) $(CFLAGS) -MMD -I $(INC_DIR) -c $< -o $@
-	@echo "Object of the file $(basename $<) has been created 🤐"
+#echo "Object of the file $(basename $<) has been created 🤐"
 
 all:
 	@$(MAKE) $(NAME) $(NPD)
@@ -38,17 +38,17 @@ $(NAME):: $(OBJ)
 	@echo "Compiling $(NAME) 😈"
 
 $(NAME)::
-	@echo "Hello, $(NAME) already compiled 😇"
+	@echo "Hello, $(NAME) already compiled 🦆"
 
 -include $(DEP)
 
 clean:
 	@$(RM) $(OBJ_DIR)
-	@echo "$(OBJ_DIR) and company leave 42 🗑"
+	@echo "$(OBJ_DIR) has been removed 😭"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "$(NAME) has been black holed 🕳"
+	@echo "$(NAME) has been destroyed 🥺🥺"
 
 re:
 	@$(MAKE) fclean $(NPD)
