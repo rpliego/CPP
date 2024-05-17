@@ -8,7 +8,7 @@ int	main(void)
 	Horde = zombieHorde(n, "");
 
 	for (int i = 0; i < n; i++)
-		Horde[i].announce();
+		Horde[63].announce();
 
 	delete[] Horde;
 }

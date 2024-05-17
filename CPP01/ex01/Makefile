@@ -11,7 +11,7 @@ INC_DIR = -I ./inc
 RM = rm -rf
 MP = mkdir -p
 CC = c++
-CFLAGS = -Werror -Wextra -Wall -std=c++98 #-O3 -g  -fsanitize=address
+CFLAGS = -Werror -Wextra -Wall -std=c++98 -O3 -g  -fsanitize=address
 # =============
 
 FILES = main Zombie zombieHorde
