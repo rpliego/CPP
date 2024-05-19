@@ -1,4 +1,4 @@
-NAME		=  Unnecessary_violence
+NAME		=  Sed_is_for_losers
 NPD			= --no-print-directory
 OBJ_DIR		= obj/
 
@@ -14,7 +14,7 @@ CC = c++
 CFLAGS = -Werror -Wextra -Wall -std=c++98 -O3 #-g  -fsanitize=address
 # =============
 
-FILES = main HumanA HumanB Weapon
+FILES = main
 
 SRC = $(addsuffix .cpp, $(FILES))
 
