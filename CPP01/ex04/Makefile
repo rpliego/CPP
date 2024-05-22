@@ -11,7 +11,7 @@ INC_DIR = -I ./inc
 RM = rm -rf
 MP = mkdir -p
 CC = c++
-CFLAGS = -Werror -Wextra -Wall -std=c++98 -O3 #-g  -fsanitize=address
+CFLAGS = -Werror -Wextra -Wall -std=c++98 -O3 -g  -fsanitize=address
 # =============
 
 FILES = main
@@ -28,7 +28,6 @@ DEP = $(addsuffix .d, $(basename $(OBJ)))
 $(OBJ_DIR)%.o: %.cpp
 	@$(MP) $(dir $@)
 	@$(CC) $(CFLAGS) -MMD $(INC_DIR) -c $< -o $@
-#echo "Object of the file $(basename $<) has been created 🤐"
 
 all:
 	@$(MAKE) $(NAME) $(NPD)
