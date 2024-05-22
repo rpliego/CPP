@@ -34,8 +34,14 @@ void	Harl::_error(void)
 
 void	Harl::complain(std::string level)
 {
-	int	i = -1;
-	void (Harl::*fptr[4])();
+	void (Harl::* fptr[4])() = 
+	{
+		&Harl::_debug,
+		&Harl::_info,
+		&Harl::_warning,
+		&Harl::_error
+	};
+
 	std::string	aux[4] = 
 	{
 		"DEBUG",
@@ -44,18 +50,14 @@ void	Harl::complain(std::string level)
 		"ERROR" 
 	};
 
-	fptr[0] = &Harl::_debug;
-	fptr[1] = &Harl::_info;
-	fptr[2] = &Harl::_warning;
-	fptr[3] = &Harl::_error;
-
-	while (++i < 4)
+	for (int i = 0; i < 4; i++)
 	{
 		if (aux[i] == level)
 		{
-			(this->*fptr[i])();
+			(this->* fptr[i])();
 			return ;
 		}
 	}
+	
 	std::cout << "???????????????" << std::endl;
 }
