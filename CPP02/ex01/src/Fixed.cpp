@@ -1,4 +1,4 @@
-#include "Fixed.hpp"
+#include "../inc/Fixed.hpp"
 
 const int Fixed::_bits = 8;
 
@@ -14,8 +14,19 @@ Fixed::Fixed(const Fixed &copy)
 	_value = copy.getRawBits();
 }
 
+Fixed::Fixed(const int tofixed)
+{
+	this->_value = tofixed << _bits;
+}
+
+Fixed::Fixed(const float tofixed)
+{
+	this->_value = round(tofixed * (1 << _bits));
+}
+
 Fixed &Fixed::operator=(const Fixed &copy)
 {
+	std::cout << "Copy assignment operator called" << std::endl;
 	this->_value = copy.getRawBits();
 	return *this;
 }
@@ -33,5 +44,23 @@ int	Fixed::getRawBits() const
 
 void	Fixed::setRawBits(int const raw)
 {
+	std::cout << "setRawBits member function called" << std::endl;
 	this->_value = raw;
+}
+
+
+float	Fixed::toFloat(void) const
+{
+	return round(this->_value / (1 << _bits));
+}
+
+int		Fixed::toInt(void) const
+{
+	return this->_value >> _bits;
+}
+
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
+{
+	os << fixed.toFloat();
+	return os;
 }
