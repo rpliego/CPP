@@ -5,20 +5,20 @@ const int Fixed::_bits = 8;
 //~~Default constructor and destructor~~//
 Fixed::Fixed() 
 {
-	std::cout << "Default constructor called" << std::endl;
+	//std::cout << "Default constructor called" << std::endl;
 	this->_value = 0;
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructoc called" << std::endl;
+	//std::cout << "Destructoc called" << std::endl;
 }
 
 
 //~~~~~~~~Copy constructor~~~~~~~~~//
 Fixed::Fixed(const Fixed &copy)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	//std::cout << "Copy constructor called" << std::endl;
 	_value = copy.getRawBits();
 }
 
@@ -38,7 +38,7 @@ Fixed::Fixed(const float tofixed)
 //~~~~~~~~~~~Overloads~~~~~~~~~~~//
 Fixed &Fixed::operator=(const Fixed &copy)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	//std::cout << "Copy assignment operator called" << std::endl;
 	this->_value = copy.getRawBits();
 	return *this;
 }
@@ -139,13 +139,13 @@ Fixed	Fixed::operator--(int)
 //~~~~~Public functions~~~~~//
 int	Fixed::getRawBits() const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	//std::cout << "getRawBits member function called" << std::endl;
 	return (this->_value);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
+	//std::cout << "setRawBits member function called" << std::endl;
 	this->_value = raw;
 }
 
