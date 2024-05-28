@@ -12,14 +12,14 @@ OBJS = $(SRCS:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) inc/ClapTrap.hpp
+$(NAME): $(OBJS) inc/ClapTrap.hpp Makefile
 	$(CC) $(FLAGS) -o $(NAME) $(OBJS)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp | $(OBJ_DIR)
 	$(CC) $(FLAGS) -I $(INC_DIR) -c $< -o $@
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 clean:
 	rm -rf $(OBJ_DIR)

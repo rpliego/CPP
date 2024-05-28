@@ -16,18 +16,21 @@ class ClapTrap
 		int 		_attackDamage;
 
 	public:
-		ClapTrap(std::string name);
+		ClapTrap();
 		~ClapTrap();
 
+		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &other);
 		ClapTrap &operator=(const ClapTrap &toCopy);
 
-		void	statsSetter(int	stat, int newValue);
-		int		statsGetter(int	stat);
+		void		statsSetter(int	stat, int newValue);
+		int			statsGetter(int	stat);
+		void		nameSetter(std::string newName);
+		std::string nameGetter();
 
-		void	attack(const std::string& target);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
+		void		attack(const std::string& target);
+		void		takeDamage(unsigned int amount);
+		void		beRepaired(unsigned int amount);
 };
 
 #endif

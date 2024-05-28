@@ -3,7 +3,10 @@
 int	main()
 {
 	ClapTrap bob("Bob");
-	ClapTrap paco("Paco");
+	ClapTrap paco;
+	ClapTrap aux(paco);
+
+	paco.nameSetter("Paco");
 
 	std::cout << std::endl;
 	bob.statsSetter(ATTACKDAMAGE, 1);
@@ -34,5 +37,8 @@ int	main()
 
 	bob.attack("someone");
 	bob.beRepaired(3);
+	std::cout << std::endl;
+
+	aux.beRepaired(100);
 	std::cout << std::endl;
 }

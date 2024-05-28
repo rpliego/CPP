@@ -1,25 +1,26 @@
 #include "../inc/ClapTrap.hpp"
 
 // Default Constructor
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap() : _name("DefaultName"), _hitpoints(10), _energyPoints(10), _attackDamage(0)
 {
 	std::cout << "Default constructor called" << std::endl;
-	this->_name = name;
-	this->_hitpoints = 10;
-	this->_energyPoints = 10;
-	this->_attackDamage = 0;
 }
 
-// Destructor
-ClapTrap::~ClapTrap()
+// Additional Constructor 
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitpoints(10), _energyPoints(10), _attackDamage(0) 
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Additional constructor called" << std::endl;
 }
+
+
+// Destructor
+ClapTrap::~ClapTrap() {std::cout << "Destructor called" << std::endl;}
+
 
 // Copy Constructor
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Copy constructor called" << std::endl;
 	*this = other;
 }
 
@@ -45,6 +46,9 @@ void	ClapTrap::statsSetter(int stat, int newValue)
 		this->_attackDamage = newValue;
 }
 
+void	ClapTrap::nameSetter(std::string newName) {this->_name = newName;}
+
+
 // Getters
 int	ClapTrap::statsGetter(int stat)
 {
@@ -56,6 +60,9 @@ int	ClapTrap::statsGetter(int stat)
 		return this->_attackDamage;
 	return -1;
 }
+
+std::string	ClapTrap::nameGetter() {return this->_name;}
+
 
 // Action Functions
 void	ClapTrap::attack(const std::string &target)
