@@ -1,4 +1,4 @@
-#ifndef CLAPTRAP_HPP
+ #ifndef CLAPTRAP_HPP
 #define CLAPTRAP_HPP
 
 #include <iostream>
@@ -24,14 +24,14 @@ class ClapTrap
 
 		ClapTrap &operator=(const ClapTrap &toCopy);
 
-		void		statsSetter(int	stat, int newValue);
-		int			statsGetter(int	stat);
-		void		nameSetter(std::string newName);
-		std::string nameGetter();
+		void			statsSetter(int	stat, int newValue);
+		int				statsGetter(int	stat);
+		void			nameSetter(std::string newName);
+		std::string 	nameGetter();
 
-		void		attack(const std::string& target);
-		void		takeDamage(unsigned int amount);
-		void		beRepaired(unsigned int amount);
+		virtual void	attack(const std::string& target);
+		void			takeDamage(unsigned int amount);
+		void			beRepaired(unsigned int amount);
 };
 
 #endif

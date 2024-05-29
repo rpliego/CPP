@@ -10,9 +10,12 @@ class ScavTrap : public ClapTrap
 		~ScavTrap();
 
 		ScavTrap(std::string name);
-		// ScavTrap(const ScavTrap &other);
+		ScavTrap(const ScavTrap &other);
 
-		// ScavTrap &operator=(const ScavTrap &toCopy);
+		ScavTrap &operator=(const ScavTrap &toCopy);
+
+		void	attack(const std::string &target);
+		void	guardGate();
 };
 
 #endif
