@@ -47,20 +47,6 @@ FragTrap	&FragTrap::operator=(const FragTrap &toCopy)
 
 
 // Status Functions
-void	FragTrap::attack(const std::string &target)
-{
-	if (this->_energyPoints > 0 && this->_hitpoints > 0)
-	{
-		this->_energyPoints--;
-		std::cout << "FragTrap " << this->_name << " attacks " << target 
-			<< ", causing " << this->_attackDamage << " points of damage!!" << std::endl;
-	}
-	else if (this->_energyPoints < 0)
-		std::cout << "FragTrap " << this->_name << " cant attack without energipoints" << std::endl;
-	else
-		std::cout << "FragTrap " << this->_name << " cant attack without hitpoints" << std::endl;
-}
-
 void	FragTrap::highFiveGuys()
 {
 	std::cout << "This member function displays a positive high fives request on the standard output" << std::endl;

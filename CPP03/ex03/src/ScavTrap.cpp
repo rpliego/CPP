@@ -19,7 +19,6 @@ ScavTrap::~ScavTrap() {std::cout << "ScavTrap Destructor called" << std::endl;}
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "Adittional ScavTrap constructor called" << std::endl;
-	this->_name = name;
 	this->_hitpoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;

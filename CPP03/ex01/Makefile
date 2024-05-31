@@ -1,32 +1,56 @@
-NAME = ScavTrap
+NAME		= ScavTrap
+MKFL		= Makefile
+NPD			= --no-print-directory
+OBJ_DIR		= obj/
 
-CC = c++
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address -std=c++98
 
-SRC_DIR = src/
-OBJ_DIR = obj/
+# ----Libraryes----
 INC_DIR = inc/
+# =============
 
-SRCS = $(SRC_DIR)main.cpp $(SRC_DIR)ScavTrap.cpp $(SRC_DIR)ClapTrap.cpp
-OBJS = $(SRCS:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o)
+# -------------
+RM = rm -rf
+MP = mkdir -p
+CC = clang++
+CFLAGS = -Werror -Wextra -Wall -std=c++98 -fsanitize=address
+# =============
 
-all: $(NAME)
+FILES = main $(NAME) ClapTrap
 
-$(NAME): $(OBJS) inc/ClapTrap.hpp inc/ScavTrap.hpp
-	$(CC) $(FLAGS) -o $(NAME) $(OBJS)
+SRC = $(addsuffix .cpp, $(FILES))
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp | $(OBJ_DIR)
-	$(CC) $(FLAGS) -I $(INC_DIR) -c $< -o $@
+vpath %.cpp src
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+# -------------
+OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
+DEP = $(addsuffix .d, $(basename $(OBJ)))
+# =============
+
+$(OBJ_DIR)%.o: %.cpp
+	@$(MP) $(dir $@)
+	@$(CC) $(CFLAGS) -MMD -I $(INC_DIR) -c $< -o $@
+	@echo "Object of the file $(basename $<) has been created 🤐"
+
+all:
+	@$(MAKE) $(NAME) $(NPD)
+
+$(NAME):: $(OBJ)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@echo "Compiling $(NAME) 😈"
+
+$(NAME)::
+	@echo "Hello, $(NAME) already compiled 😇"
+
+-include $(DEP)
 
 clean:
-	rm -rf $(OBJ_DIR)
+	$(RM) $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
-re: fclean all
+re:
+	@$(MAKE) fclean $(NPD)
+	@$(MAKE) $(NPD)
 
 .PHONY: all clean fclean re

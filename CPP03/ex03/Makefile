@@ -1,4 +1,4 @@
-NAME		= ClapTrap
+NAME		= DiamondTrap
 MKFL		= Makefile
 NPD			= --no-print-directory
 OBJ_DIR		= obj/
@@ -15,7 +15,7 @@ CC = clang++
 CFLAGS = -Werror -Wextra -Wall -std=c++98 -fsanitize=address
 # =============
 
-FILES = main $(NAME)
+FILES = main $(NAME) ClapTrap ScavTrap FragTrap
 
 SRC = $(addsuffix .cpp, $(FILES))
 
