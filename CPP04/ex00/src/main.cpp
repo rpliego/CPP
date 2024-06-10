@@ -1,17 +1,32 @@
-#include <iostream>
-#include <unistd.h>  // Para fork()
+#include "Animal.hpp"
+#include "Dog.hpp"
 
-int main() {
-    pid_t pid = fork();
+int main()
+{
+    const Animal* animal = new Animal();
+	const Animal* dog = new Dog();
 
-    if (pid < 0) {
-        std::cerr << "Fork fallido" << std::endl;
-        return 1;
-    } else if (pid == 0) {
-        std::cout << "Hola desde el proceso hijo" << std::endl;
-    } else {
-        std::cout << "Hola desde el proceso padre" << std::endl;
-    }
+	std::cout << std::endl << std::endl;
 
-    return 0;
+	std::cout << "Animal-> " << animal->getType() << " " << std::endl;
+	std::cout << "Dog-> " << dog->getType() << " " << std::endl;
+
+	std::cout << std::endl << std::endl;
+
+	std::cout << "AnimalSound-> ";
+	animal->makeSound();
+	std::cout << std::endl;
+	std::cout << "DogSound-> ";
+	dog->makeSound();
+	std::cout << std::endl;
+
+	std::cout << std::endl << std::endl;
+	
+	
+	std::cout << "AnimalDestructor-> ";
+	delete animal;
+	std::cout << std::endl;
+	std::cout << "DogDestructor-> ";
+	delete dog;
+	std::cout << std::endl;
 }
