@@ -7,11 +7,11 @@ class Dog : public Animal
 {
     public:
         Dog();
-        virtual ~Dog();
+        ~Dog();
         Dog(const Dog &toCopy);
         Dog &operator=(const Dog &toCopy);
 
-        void    makeSound();
+        void    makeSound() const;
 };
 
 #endif

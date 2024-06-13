@@ -15,7 +15,7 @@ CC = c++
 CFLAGS = -Werror -Wextra -Wall -std=c++98 -fsanitize=address
 # =============
 
-FILES = main Animal Dog
+FILES = main Animal Dog Cat
 
 SRC = $(addsuffix .cpp, $(FILES))
 

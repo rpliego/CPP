@@ -21,7 +21,7 @@ Dog &Dog::operator=(const Dog &toCopy)
     return *this;
 }
 
-void    Dog::makeSound()
+void    Dog::makeSound() const
 {
     std::cout << "gUAU GuAu" << std::endl;
 }
