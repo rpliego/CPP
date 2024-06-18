@@ -7,8 +7,20 @@
 
 int main(void)
 {
-	Animal*	dog = new Dog();
+	std::cout << "--------------------------------------" << std::endl;
+    std::cout << "--- CREATING A CAT: ---" << std::endl;
+    Cat cat = Cat();
+    cat.makeSound();
+    cat.printIdeas();
+    cat.setIdea("im a cat");
+    std::cout << "--- ADDED 1 IDEA: ---" << std::endl;
+    cat.printIdeas();
+    for (int i = 0; i < 110; i ++)
+        cat.setIdea("a");
+   
+    cat.printIdeas();
+    
+   
 
-	dog
-	return 0;
+    return (0);
 }

@@ -46,9 +46,10 @@ void    Brain::printIdeas()
 {
     int i = 0;
 
-    do
+
+    while (this->_ideas[i] != "Empty mind")
     {
         std::cout << this->_ideas[i] << std::endl;
         i++;
-    } while (this->_ideas[i] != "Empty mind");
+    }
 }
