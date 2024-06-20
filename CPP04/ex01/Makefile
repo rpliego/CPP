@@ -12,7 +12,7 @@ INC_DIR = inc/
 RM = rm -rf
 MP = mkdir -p
 CC = c++
-CFLAGS = -Werror -Wextra -Wall -std=c++98 -fsanitize=address
+CFLAGS = -Werror -Wextra -Wall -std=c++98 -g -fsanitize=address
 # =============
 
 FILES = main Animal Dog Cat WrongAnimal WrongCat Brain

@@ -1,11 +1,11 @@
 #include "Dog.hpp"
 #include "Brain.hpp"
 
-Dog::Dog() : Animal() 
+Dog::Dog() : Animal("Dog") 
 {
     std::cout << "Dog Default Constructor called" << std::endl;
     this->type = "Dog";
-    this->brain = new Brain;
+    this->brain = new Brain();
 }
 
 Dog::~Dog()
@@ -14,14 +14,17 @@ Dog::~Dog()
     delete this->brain;   
 }
 
-Dog::Dog(const Dog &toCopy) : Animal()
+Dog::Dog(const Dog &toCopy) : Animal(toCopy)
 {
     std::cout << "Dog Copy Constructor called" << std::endl;
-    *this = toCopy;
+    this->brain = new Brain(*toCopy.brain);
 }
 
 Dog &Dog::operator=(const Dog &toCopy)
 {
+    std::cout << "Dog = overload called" << std::endl;
+    if (this->brain)
+	    delete this->brain;
     this->type = toCopy.type;
     this->brain = new Brain(*toCopy.brain);
 
