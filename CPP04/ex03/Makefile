@@ -15,7 +15,7 @@ CC = c++
 CFLAGS = -Werror -Wextra -Wall -std=c++98 -g -fsanitize=address
 # =============
 
-FILES = main AMateria ICharacter
+FILES = main AMateria Ice
 
 SRC = $(addsuffix .cpp, $(FILES))
 
