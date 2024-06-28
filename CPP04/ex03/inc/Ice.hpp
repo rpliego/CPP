@@ -12,6 +12,7 @@ class Ice : public AMateria
 
 		Ice& operator=(const Ice& toCopy);
 		AMateria* clone() const;
+		void	use(ICharacter& target);
 };
 
 #endif

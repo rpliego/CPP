@@ -31,8 +31,3 @@ AMateria::AMateria(const std::string& type)
 }
 
 const std::string&	AMateria::getType() const {return this->_type;}
-
-// void	AMateria::use(ICharacter& target)
-// {
-	
-// }
