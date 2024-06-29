@@ -24,5 +24,4 @@ class Character : public ICharacter
 		void		use(int	indx, ICharacter& target);
 };
 
-
 #endif

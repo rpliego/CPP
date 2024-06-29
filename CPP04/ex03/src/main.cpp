@@ -1,15 +1,18 @@
 #include "AMateria.hpp"
+#include "Character.hpp"
 #include "Ice.hpp"
 
 int	main()
 {
-	AMateria* bob;
+	AMateria* ice = new Ice;
+	ICharacter* bob = new Character("bob");
+	ICharacter* elmanetas = new Character("enemy");
 
-	bob = new Ice;
+	bob->equip(ice);
 
-	std::cout << bob->getType() << std::endl;
+	bob->use(0, *elmanetas);
 
-
-
+	delete elmanetas;
 	delete bob;
+	//delete ice;
 }
