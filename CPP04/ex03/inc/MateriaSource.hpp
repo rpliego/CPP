@@ -5,6 +5,9 @@
 
 class MateriaSource : public IMateriaSource
 {
+	private:
+		AMateria* _slots[4];
+
 	public:
 		MateriaSource();
 		~MateriaSource();
@@ -12,7 +15,7 @@ class MateriaSource : public IMateriaSource
 
 		MateriaSource& operator=(const MateriaSource& toCopy);
 
-		void learnMateria(AMateria*);
+		void learnMateria(AMateria* m);
 		AMateria* createMateria(std::string const & type);
 };
 
