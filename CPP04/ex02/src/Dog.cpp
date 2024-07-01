@@ -4,29 +4,29 @@
 Dog::Dog() : Animal("Dog") 
 {
     std::cout << "Dog Default Constructor called" << std::endl;
-    this->type = "Dog";
-    this->brain = new Brain();
+    this->_type = "Dog";
+    this->_brain = new Brain();
 }
 
 Dog::~Dog()
 {
     std::cout << "Dog Destructor called" << std::endl;
-    delete this->brain;   
+    delete this->_brain;   
 }
 
 Dog::Dog(const Dog &toCopy) : Animal(toCopy)
 {
     std::cout << "Dog Copy Constructor called" << std::endl;
-    this->brain = new Brain(*toCopy.brain);
+    this->_brain = new Brain(*toCopy._brain);
 }
 
 Dog &Dog::operator=(const Dog &toCopy)
 {
     std::cout << "Dog = overload called" << std::endl;
-    if (this->brain)
-	    delete this->brain;
-    this->type = toCopy.type;
-    this->brain = new Brain(*toCopy.brain);
+    if (this->_brain)
+	    delete this->_brain;
+    this->_type = toCopy._type;
+    this->_brain = new Brain(*toCopy._brain);
 
     return *this;
 }
@@ -34,7 +34,7 @@ Dog &Dog::operator=(const Dog &toCopy)
 void    Dog::makeSound() const{std::cout << "gUAU GuAu" << std::endl;}
 
 
-void    Dog::setIdea(std::string idea) {this->brain->setIdea(idea);}
+void    Dog::setIdea(std::string idea) {this->_brain->setIdea(idea);}
 
-void    Dog::printIdeas() {this->brain->printIdeas();}
+void    Dog::printIdeas() {this->_brain->printIdeas();}
 

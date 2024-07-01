@@ -7,7 +7,7 @@ class Brain
 {
     private:
         std::string _ideas[100];
-        int index;
+        int _index;
 
     public:
         Brain();
