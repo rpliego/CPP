@@ -2,8 +2,10 @@
 # define BUREAUCRAT_HPP
 
 #include <iostream>
+#include <Form.hpp>
 #include <stdexcept>
 
+class Form;
 
 class Bureaucrat
 {
@@ -26,12 +28,14 @@ class Bureaucrat
 		void		incrementGrade(const int i);
 		void		decrementGrade(const int i);
 
+		void		signForm(Form& toSing) const;
+
 		class GradeTooHighException : public std::exception
 		{
 			public:
 				virtual const char* what() const throw()
                 {
-                    return ("Error: Grade is too high.");
+                    return ("Bureaucrat Error: Grade is too high.");
                 }
 		};
 
@@ -40,7 +44,7 @@ class Bureaucrat
 			public:
 				virtual const char* what() const throw()
                 {
-                    return ("Error: Grade is too low.");
+                    return ("Bureaucrat Error: Grade is too low.");
                 }
 		};
 };

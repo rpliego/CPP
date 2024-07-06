@@ -2,43 +2,21 @@
 
 int main(void)
 {
-    std::cout << "------- DEFAULT CONSTRUCTOR -------" << std::endl;
-    Bureaucrat test;
-    std::cout << test << std::endl << std::endl;
+    Form f("form", 1, 1);
+    Bureaucrat a("bob", 2);
 
-
-    std::cout << std::endl << "------- NAME+GRADE CONSTRUCTOR -------" << std::endl;
-    Bureaucrat bob("bob", 1);
-    std::cout << bob << std::endl << std::endl;
-
-    
-    std::cout << std::endl << "------- EXCEPTION CATCH IN CONSTRUCTOR -------" << std::endl;
-    Bureaucrat di("di", 333);
-    std::cout << di << std::endl << std::endl;
-    
-
-    std::cout << std::endl << "------- DECREMENT MEMBER FUNCTION -------" << std::endl;
     try
     {
-        di.decrementGrade(1);
+        a.signForm(f);
+        std::cout << f << std::endl;
+        a.signForm(f);
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << std::endl;
+        std::cerr << "Bureaucrat "<< a.getName() << " couldnt sign " 
+        << f.getName() << " because " << e.what() << '\n';
     }
-    std::cout << di << std::endl << std::endl;
-
-
-    std::cout << std::endl << "------- INCREMENT MEMBER FUNCTION -------" << std::endl;
-    try
-    {
-        bob.incrementGrade(23);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-    std::cout << bob << std::endl << std::endl;
+    
 
     return (0);
 }
