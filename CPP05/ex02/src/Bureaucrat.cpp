@@ -25,28 +25,11 @@ Bureaucrat::Bureaucrat(std::string name, int i) : _name(name)
 {
 	std::cout << "Bureaucrat Parametized Constructor called" << std::endl;
 
+	if (i > 150)
+		throw Bureaucrat::GradeTooLowException();
+	else if (i < 1)
+		throw Bureaucrat::GradeTooHighException();
 	this->_grade = i;
-	try
-	{
-		if (i > 150)
-			throw Bureaucrat::GradeTooLowException();
-		else if (i < 1)
-			throw Bureaucrat::GradeTooHighException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-		if (i > 150)
-		{
-			this->_grade = 150;
-			std::cout << this->_name <<" grade set to 150" << std::endl;
-		}
-		else
-		{
-			this->_grade = 1;
-			std::cout << this->_name <<" grade set to 1" << std::endl;
-		}
-	}
 }
 
 
@@ -72,11 +55,25 @@ void		Bureaucrat::signForm(AForm& toSing) const
 {
 	if (this->_grade > toSing.getGradeToSign())
 		throw GradeTooLowException();
-	else if(toSing.getBoolSigned() == 1)
-		throw AForm::AlreadySigned();
-	toSing.setSigned();
+	toSing.beSigned(*this);
 }
 
+void		Bureaucrat::executeForm(const AForm& form)
+{
+	try
+	{
+		if (this->getGrade() > form.getGradeToExecute())
+			throw GradeTooLowException();
+		else if (form.getBoolSigned() == true)
+			throw AForm::NotSigned();
+		form.execute(*this);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+}
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& b)
 {

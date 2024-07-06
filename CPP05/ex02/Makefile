@@ -1,4 +1,4 @@
-NAME		= Form
+NAME		= MoreForms
 MKFL		= Makefile
 NPD			= --no-print-directory
 OBJ_DIR		= obj/
@@ -15,7 +15,7 @@ CC = c++
 CFLAGS = -Werror -Wextra -Wall -std=c++98 -g -fsanitize=address
 # =============
 
-FILES = main Bureaucrat AForm
+FILES = main Bureaucrat AForm PresidentialPardonForm
 
 SRC = $(addsuffix .cpp, $(FILES))
 

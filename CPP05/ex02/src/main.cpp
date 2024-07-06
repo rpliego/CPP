@@ -1,22 +1,13 @@
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main(void)
 {
-    AForm f("form", 1, 1);
-    Bureaucrat a("bob", 2);
+    PresidentialPardonForm a;
+    Bureaucrat bob("bob", 1);
 
-    try
-    {
-        a.signForm(f);
-        std::cout << f << std::endl;
-        a.signForm(f);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << "Bureaucrat "<< a.getName() << " couldnt sign " 
-        << f.getName() << " because " << e.what() << '\n';
-    }
-    
+    bob.signForm(a);
+    bob.executeForm(a);
 
     return (0);
 }
