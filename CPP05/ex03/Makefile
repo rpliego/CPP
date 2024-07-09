@@ -1,4 +1,4 @@
-NAME		= MoreForms
+NAME		= Intern
 MKFL		= Makefile
 NPD			= --no-print-directory
 OBJ_DIR		= obj/

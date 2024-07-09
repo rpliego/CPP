@@ -56,15 +56,16 @@ void		Bureaucrat::signForm(AForm& toSing) const
 	try
 	{
 		if (this->_grade > toSing.getGradeToSign())
-			throw GradeTooLowException();
+			throw Bureaucrat::GradeTooLowException();
+		if (toSing.getBoolSigned() == true)
+			throw AForm::AlreadySigned();
 		toSing.beSigned(*this);
 	}
 	catch(const std::exception& e)
 	{
 		std::cout << "Bureaucrat " << this->_name << " couldnt sign " << toSing.getName() << std::endl;
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
-	
 }
 
 void		Bureaucrat::executeForm(const AForm& form)
@@ -80,7 +81,7 @@ void		Bureaucrat::executeForm(const AForm& form)
 	catch(const std::exception& e)
 	{
 		std::cout << "Bureaucrat " << this->_name << " couldnt execute " << form.getName() << std::endl;
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 	
 }

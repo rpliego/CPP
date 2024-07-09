@@ -67,11 +67,19 @@ void		AForm::beSigned(const Bureaucrat& b)
 
 void	AForm::execute(const Bureaucrat& executor) const
 {
-	if (this->_signed == false)
-		throw AlreadySigned();
-	else if(this->_grdToExecute < executor.getGrade())
-		throw Bureaucrat::GradeTooLowException();
-	executeForm();
+	try
+	{
+		if (this->_signed == false)
+			throw AlreadySigned();
+		else if(this->_grdToExecute < executor.getGrade())
+			throw Bureaucrat::GradeTooLowException();
+		executeForm();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 }
 
 

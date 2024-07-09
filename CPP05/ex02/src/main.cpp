@@ -5,16 +5,15 @@
 
 int main(void)
 {
-    PresidentialPardonForm a("Joan");
+	Bureaucrat di("di", 1);
 	std::cout << "-------------------------" << std::endl;
     Bureaucrat bob("bob", 1);
 	std::cout << "-------------------------" << std::endl;
-
+    PresidentialPardonForm a("Joan");
+	std::cout << "-------------------------" << std::endl;
 	RobotomyRequestForm b("Anna");
 	std::cout << "-------------------------" << std::endl;
-	Bureaucrat di("di", 1);
-	std::cout << "-------------------------" << std::endl;
-	std::cout << "First try catch" << std::endl;
+	ShrubberyCreationForm c("Tomasin");
 	std::cout << "-------------------------" << std::endl;
     try
 	{
@@ -35,12 +34,23 @@ int main(void)
 		di.executeForm(b);
 		di.executeForm(b);
 		std::cout << "-------------------------" << std::endl;
+		bob.signForm(c);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 	std::cout << "-------------------------" << std::endl;
+
+	Bureaucrat aux("Lua", 150);
+	try
+	{
+		aux.signForm(c);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
     return (0);
 }
