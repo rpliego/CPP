@@ -66,7 +66,7 @@ class AForm
 			public:
 				virtual const char* what() const throw()
 				{
-					return ("Form Error: Not signed");
+					return ("Form Error: Not  signed");
 				}
 		};
 };

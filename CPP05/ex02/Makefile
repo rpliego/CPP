@@ -15,7 +15,7 @@ CC = c++
 CFLAGS = -Werror -Wextra -Wall -std=c++98 -g -fsanitize=address
 # =============
 
-FILES = main Bureaucrat AForm PresidentialPardonForm
+FILES = main Bureaucrat AForm PresidentialPardonForm ShrubberyCreationForm RobotomyRequestForm
 
 SRC = $(addsuffix .cpp, $(FILES))
 

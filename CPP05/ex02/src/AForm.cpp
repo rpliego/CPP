@@ -60,7 +60,6 @@ void		AForm::beSigned(const Bureaucrat& b)
 {
 	if (this->_signed == 1)
 		throw AlreadySigned();
-	//b.signForm(*this);
 	this->_signed = 1;
 	std::cout << "Bureaucrat " << b.getName() << " signed " << this->getName() << std::endl;
 }
@@ -68,18 +67,10 @@ void		AForm::beSigned(const Bureaucrat& b)
 
 void	AForm::execute(const Bureaucrat& executor) const
 {
-	try
-	{
-		if (this->_signed == false)
-			throw AlreadySigned();
-		else if(this->_grdToExecute < executor.getGrade())
-			throw Bureaucrat::GradeTooLowException();
-		
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	if (this->_signed == false)
+		throw AlreadySigned();
+	else if(this->_grdToExecute < executor.getGrade())
+		throw Bureaucrat::GradeTooLowException();
 	executeForm();
 }
 

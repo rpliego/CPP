@@ -1,6 +1,7 @@
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
 
-RobotomyRequestForm::RobotomyRequestForm() :_target("~NoTarget~"), AForm("RobotomyRequestForm", 72, 55) 
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 55), _target("~NoTarget~") 
 {
 	std::cout << "RobotomyRequestForm Default Constructor called" << std::endl;
 }
@@ -33,7 +34,11 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRe
 	this->_target = target;
 }
 
-void	RobotomyRequestForm::executeForm()
+void	RobotomyRequestForm::executeForm() const
 {
-	
+	std::cout << "* Some drilling noises *" << std::endl;
+	if (std::rand() % 2 == 0)
+		std::cout << this->_target << " has been robotomized successfully" << std::endl;
+	else
+		std::cout << this->_target << "'s robotimization has failed" << std::endl;
 }
