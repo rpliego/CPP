@@ -109,5 +109,4 @@ void	ScalarConverter::convert(const std::string input)
 		std::cout << "float: Overflow Error" << std::endl;
 		std::cout << "double: Overflow Erro" << std::endl;
 	}
-	//std::cout << "Input Error" << std::endl;
 }
