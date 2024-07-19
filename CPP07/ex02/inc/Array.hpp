@@ -17,7 +17,7 @@ class Array
 		Array(const Array& toCopy);
 		Array<T>& operator=(const Array& toCopy);
 
-		Array<T> operator[](int indx);
+		T& operator[](unsigned int indx) const;
 
 		Array(unsigned int size);
 
