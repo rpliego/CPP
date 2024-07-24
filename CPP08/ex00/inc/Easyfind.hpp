@@ -12,7 +12,7 @@ void	easyfind(T c, int f)
 {
 	for (int i = 0; i < (int)c.size(); i++)
 	{
-		if (c.at(i) == f)
+		if (c[i] == f)
 		{
 			std::cout << "The first ocurrence is at index: " << i << std::endl;
 			return ;
