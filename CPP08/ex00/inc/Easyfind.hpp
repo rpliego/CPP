@@ -2,7 +2,9 @@
 # define EASYFIND_HPP
 
 # include <iostream>
-# include <array>
+# include <vector>
+# include <cstdlib>
+# include <algorithm> 
 # include <exception>
 
 template <typename T>
@@ -19,5 +21,15 @@ void	easyfind(T c, int f)
 	throw std::logic_error("Int not found");
 }
 
+
+template <typename T>
+void shuffle(std::vector<T>& vec)
+{
+    for (std::size_t i = vec.size() - 1; i > 0; --i)
+	{
+        std::size_t j = rand() % (i + 1);
+        std::swap(vec[i], vec[j]);
+    }
+}
 
 #endif

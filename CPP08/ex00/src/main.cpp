@@ -2,12 +2,19 @@
 
 int	main()
 {
-	int n = 6;
-	std::array<int, 6> ar = {1, 2, 3, 4, 5, 6};
+	std::srand(static_cast<unsigned int>(time(0)));
+    std::vector<int> vec;
 
+	for (int i = 0; i < 20; i++)
+		vec.push_back(i);
+
+	shuffle(vec);
+
+	int i = rand() % 24 + 1;
 	try
 	{
-		easyfind(ar, n);
+		std::cout << i << std::endl;
+		easyfind(vec, i);
 	}
 	catch(const std::exception& e)
 	{
