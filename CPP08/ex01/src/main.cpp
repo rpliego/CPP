@@ -2,11 +2,11 @@
 
 int main()
 {
-	Span span(10);
+	Span span(10000);
 
 	try
 	{
-		span.addMoreNumbers(1, 100);
+		span.addMoreNumbers(1, 10000);
 
 	}
 	catch(const std::exception& e)
