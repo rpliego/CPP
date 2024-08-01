@@ -7,6 +7,7 @@
 # include <fstream>
 # include <string>
 # include <cstdlib>
+# include <limits>
 
 class BitcoinExchange
 {
@@ -24,6 +25,7 @@ class BitcoinExchange
 
 		void	_initMap();
 		void	_exchange(std::string line);
+		void	_printOutput(std::string date, float value);
 };
 
 #endif
