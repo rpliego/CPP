@@ -13,7 +13,7 @@
 class PmergeMe
 {
 	public:
-		static void	 FordJohnson();
+		static void	 FordJohnson(std::vector<int> arr);
 
 	private:
 		PmergeMe();

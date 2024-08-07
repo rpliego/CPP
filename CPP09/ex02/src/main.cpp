@@ -1,12 +1,11 @@
 #include "PmergeMe.hpp"
 
-void parseInput(int ac, char **av)
+std::vector<int> parseInput(int ac, char **av)
 {
-	if (ac < 2){
-		std::cout << "Invalid number of arguments" << std::endl;
-		return ;
-	}
+	if (ac < 2)
+		throw std::invalid_argument("Error: Invalid number of arguments");
 
+	std::vector<int> out;
 	long n;
 	for (int i = 1; i < ac; ++i)
 	{
@@ -18,16 +17,18 @@ void parseInput(int ac, char **av)
 		n = std::strtol(av[i], NULL, 10);
 		if (n < 0 || n > std::numeric_limits<int>::max())
 			throw std::invalid_argument("Error: Invalid arguments");
+		out.push_back(n);
 	}
-	
+	return out;
 }
 
 int main(int ac, char** av)
 {
+	std::vector<int> arr;
 	try
 	{
-		parseInput(ac, av);
-		PmergeMe::FordJohnson();
+		arr = parseInput(ac, av);
+		PmergeMe::FordJohnson(arr);
 	}
 	catch(const std::exception& e)
 	{
