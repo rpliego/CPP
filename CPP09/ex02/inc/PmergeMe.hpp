@@ -8,6 +8,7 @@
 # include <cstdlib>
 # include <vector>
 # include <list>
+# include <algorithm>
 
 
 class PmergeMe
