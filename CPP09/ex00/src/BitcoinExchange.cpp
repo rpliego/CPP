@@ -93,7 +93,7 @@ float	validValue(std::string strval)
 	{
 		if (strval[i] == '.')
 			flag++;
-		if (!isdigit(strval[i]) && (flag > 1 || strval[i] != '.'))
+		if (!isdigit(strval[i]) && (flag > 1 || strval[i] != '.' || strval[0] == '.'))
 			throw std::invalid_argument("Error: Invalid number => " + strval);
 	}
 

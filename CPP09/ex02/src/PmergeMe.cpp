@@ -127,7 +127,7 @@ std::vector<int>	sortVector(std::vector<std::pair<int, int> > pairs, std::pair<b
 
 //~~~~~~~~~~~~~~~~~~~~List Algorithm~~~~~~~~~~~~~~~~~~~~~~~~~//
 
-std::list<std::pair<int, int> > splitPairList(std::list<int> list, std::pair<bool, int> odd)
+std::list<std::pair<int, int> > splitPairList(std::list<int> list, std::pair<bool, int>& odd)
 {
 	std::list<std::pair<int, int> > pairs;
 
@@ -140,7 +140,9 @@ std::list<std::pair<int, int> > splitPairList(std::list<int> list, std::pair<boo
 
 	for (std::list<int>::iterator i = list.begin(); i != list.end(); ++i)
 	{
-		pairs.push_back(std::make_pair(*i, *i + 1));
+		std::list<int>::iterator next = i;
+        ++next;
+		pairs.push_back(std::make_pair(*i, *next));
 
 		if (++i == list.end())
 			break ;
@@ -193,7 +195,7 @@ std::list<int> mergeList(std::list<int> smain, std::list<int> pend, std::pair<bo
 		{
             indexSequence.push_back(JacobNumbers[0]);
             size_t insert_index = JacobNumbers[0] - 1;
-			*pendit += insert_index;
+			std::advance(pendit, insert_index);
             item = *pendit;
             JacobNumbers.erase(JacobNumbers.begin());
             last = "jacob";
@@ -203,14 +205,16 @@ std::list<int> mergeList(std::list<int> smain, std::list<int> pend, std::pair<bo
             if (std::find(indexSequence.begin(), indexSequence.end(), iterator + 1) != indexSequence.end())
                 iterator++;
 			
-            item = *pendit;
+			std::list<int>::iterator aux2 = pend.begin();
+			std::advance(aux2, iterator);
+            item = *aux2;
             indexSequence.push_back(iterator + 1);
             last = "not-jacob";
 		}
-	
+
 		std::list<int>::iterator insertion_point = std::lower_bound(smain.begin(), smain.end(), item);
         smain.insert(insertion_point, item);
-        
+
         iterator++;
         jacobindex++;
 	}
@@ -236,38 +240,81 @@ std::list<int> sortList(std::list<std::pair<int, int> > pairs, std::pair<bool, i
 	return mergeList(smain, pend, odd);
 }
 
-std::list<int> createList(std::vector<int> arg)
+std::list<int> createList(char **arg)
 {
 	std::list<int> out;
 
-	for (size_t i = 0; i < arg.size(); i++)
-		out.push_back(arg[i]);
+	for (size_t i = 0; arg[i]; i++)
+		out.push_back(std::atof(arg[i]));
+
+	return out;
+}
+
+std::vector<int> createVector(char **arg)
+{
+	std::vector<int> out;
+
+	for (size_t i = 0; arg[i] != NULL; i++)
+		out.push_back(std::atof(arg[i]));
 
 	return out;
 }
 
 //~~~~~~~~~~~~~~~~~~~~Main Function~~~~~~~~~~~~~~~~~~~~~~~~~//
 
-void	PmergeMe::FordJohnson(std::vector<int> vec)
+void	PmergeMe::FordJohnson(char **arg)
 {
-	std::list<int> list = createList(vec);
+	std::vector<int> vec = createVector(arg);
 	std::pair<bool, int> odd(false, 0);
 
+
+	std::cout << std::endl << "\x1b[33;1mUnsorted Vector: \x1b[0m";
+	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+
+	clock_t t;
+	t = clock();
 
 	if (vec.size() > 1)
 	{
 		std::vector<std::pair<int, int> > pairsv = splitPairVector(vec, odd);
 		vec = sortVector(pairsv, odd);
+	}
+	t = clock() - t;
 
+	std::cout << "\x1b[33;1mVector after sort: \x1b[0m";
+	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+
+	std::cout << "\x1b[34;4mTime to process a range of "<< vec.size() <<" elements with std::vector -> \x1b[0m" << static_cast<double>(t) / CLOCKS_PER_SEC << std::endl << std::endl;
+	
+
+
+	std::list<int> list = createList(arg);
+	odd.first = false;
+	odd.second = 0;
+
+	std::cout << "\x1b[32;1mUnsorted List: \x1b[0m";
+	for (std::list<int>::iterator it = list.begin(); it != list.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+
+	t = clock();
+
+	if (list.size() > 1)
+	{
 		std::list<std::pair<int, int> > pairsl = splitPairList(list, odd);
 		list = sortList(pairsl, odd);
 	}
 	
+	t = clock() - t;
+
+	std::cout << "\x1b[32;1mList after sort: \x1b[0m";
 	for (std::list<int>::iterator it = list.begin(); it != list.end(); it++)
-	{
 		std::cout << *it << " ";
-		// if (*it + 1 == list.end() && vec[i] > vec[i + 1])
-		// 	throw std::logic_error("Not Sortedddd!!!!!!!!!");
-	}
-	
+	std::cout << std::endl;
+
+	std::cout << "\x1b[34;4mTime to process a range of "<< list.size() <<" elements with std::list -> \x1b[0m" << static_cast<double>(t) / CLOCKS_PER_SEC<< std::endl << std::endl;
 }

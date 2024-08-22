@@ -9,12 +9,14 @@
 # include <vector>
 # include <list>
 # include <algorithm>
+# include <iterator>
+# include <ctime>
 
 
 class PmergeMe
 {
 	public:
-		static void	 FordJohnson(std::vector<int> arr);
+		static void	 FordJohnson(char **arg);
 
 	private:
 		PmergeMe();

@@ -24,11 +24,10 @@ std::vector<int> parseInput(int ac, char **av)
 
 int main(int ac, char** av)
 {
-	std::vector<int> arr;
 	try
 	{
-		arr = parseInput(ac, av);
-		PmergeMe::FordJohnson(arr);
+		parseInput(ac, av);
+		PmergeMe::FordJohnson(av + 1);
 	}
 	catch(const std::exception& e)
 	{
