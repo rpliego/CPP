@@ -138,22 +138,27 @@ std::list<std::pair<int, int> > splitPairList(std::list<int> list, std::pair<boo
 		list.pop_back();
 	}
 
-	for (std::list<int>::iterator i = list.begin(); i != list.end(); *i += 2)
+	for (std::list<int>::iterator i = list.begin(); i != list.end(); ++i)
+	{
 		pairs.push_back(std::make_pair(*i, *i + 1));
+
+		if (++i == list.end())
+			break ;
+	}
 
 
 	std::list<std::pair<int, int> >::iterator it;
 	std::list<std::pair<int, int> >::iterator it2;
 
-	for (it = pairs.begin(); it != pairs.end(); *it++)
+	for (it = pairs.begin(); it != pairs.end(); it++)
 	{
 		if (it->first > it->second)
 			std::swap(it->first, it->second);
 	}
 	
-	for (it = pairs.begin(); it != pairs.end(); *it++)
+	for (it = pairs.begin(); it != pairs.end(); it++)
 	{
-		for (it2 = pairs.begin(); it2 != pairs.end(); *it2++)
+		for (it2 = pairs.begin(); it2 != pairs.end(); it2++)
 		{
 			if (it != it2 && it2->second > it->second)
 			{
@@ -168,12 +173,13 @@ std::list<std::pair<int, int> > splitPairList(std::list<int> list, std::pair<boo
 
 std::list<int> mergeList(std::list<int> smain, std::list<int> pend, std::pair<bool, int> odd)
 {
-	smain.insert(smain.begin(), pend.begin()); //areglarrrrrr!!!!!!!!!!!!!!!!
+	std::list<int>::iterator aux = pend.begin();
+	smain.insert(smain.begin(), *aux);
 	pend.erase(pend.begin());
 
 	size_t iterator = 0;
     size_t jacobindex = 3;
-    std::vector<size_t> indexSequence;
+    std::list<size_t> indexSequence;
 	indexSequence.push_back(1);
     std::string last = "default";
 	int item;
